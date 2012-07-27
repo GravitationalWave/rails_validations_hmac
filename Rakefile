@@ -3,7 +3,7 @@ namespace 'doc' do
   task :generate do
     puts `rm -rf ./doc`
     puts `yard doc --exclude 'test' --exclude 'Rakefile' --exclude 'Gemfile'`
-  end  
+  end
 end
 
 # vc
@@ -18,13 +18,13 @@ end
 # gem
 namespace 'gem' do
   task :build do
-    puts `gem build rails-validations-hmac.gemspec`
-  end  
+    puts `gem build rails_validations_hmac.gemspec`
+  end
   task :push do
-    puts `gem push rails-validations-hmac*.gem`
+    puts `gem push rails_validations_hmac*.gem`
   end
   task :remove_build do
-    puts `rm -rf rails-validations-hmac*.gem`
+    puts `rm -rf rails_validations_hmac*.gem`
   end
   task :publish => [:build, :push, :remove_build]
 end
