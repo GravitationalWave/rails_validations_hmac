@@ -58,7 +58,7 @@ describe ActiveModel::Validations::HmacValidator do
 
   describe "#validate_each" do
     context "valid hmac" do
-      it "does not add error" do
+      it "does not add an error" do
         class Post
           validates :hmac, hmac: {key: :'api_user.secret', data: [:body, :title]}
         end
