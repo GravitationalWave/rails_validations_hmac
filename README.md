@@ -16,18 +16,44 @@ Usage
 =====
 
 ```ruby
-class Post < ActiveRecord::Base
 
-  API_FIELDS = [:title, :body].sort                             # alphabetic order
+class ApiUser < ActiveRecord::Base
+  has_many :posts
+  validates :secret, presence: true
+  validates :secret_algorithm, presence: true
+end
+
+class Post < ActiveRecord::Base
+  API_FIELDS = [:title, :body].sort  # keep them in alphabetic order!
 
   attr_accessible :api_user_id, :hmac
   attr_accessible *MESSAGE_FIELDS
 
   belongs_to :api_user
 
+
+
+  # these have same meaning (supports Lambdas and Symbols evaluating):
+
   validate :hmac, precence: true, hmac: {
-    secret:   lambda { api_user.secret },                           
-    content:  lambda { API_FIELDS.collect{|m| send(m) }.join }
+    secret:     lambda { api_user.secret },
+    content:    lambda { API_FIELDS.collect{|m| send(m) }.join },
+    algorithm:  lambda { api_user.secret_algorithm }
+  }
+
+  validates :hmac, presence: true, hmac: {
+    secret:     :'api_user.secret',
+    content:     API_FIELDS,
+    algorithm:  :'api_user.secret_algorithm'
+  }
+
+
+  # these are not evaluated (presumed that static value is written)
+
+  validates :hmac, presence: true, hmac: {
+    secret:     'all_the_time_same',
+    content:    'why you would like to have a static value here?',
+    algorithm:  'md5' # by default its sha1
   }
 
 end
