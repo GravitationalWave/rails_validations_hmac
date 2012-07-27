@@ -1,0 +1,1 @@
+require 'rails_validations_hmac/support/active_model/validations/hmac_validator'
