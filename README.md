@@ -4,7 +4,7 @@ Runs fast using OpenSSL::HMAC.
 
 Supports
 --------
-* ActiveRecord
+* ActiveRecord  [hmac_validator.rb (30 sloc)](https://github.com/tione/rails_validations_hmac/blob/master/lib/rails_validations_hmac/support/active_model/validations/hmac_validator.rb)
 * On creating Issue and requesting, for other ORMs also
 
 
