@@ -32,7 +32,6 @@ class Post < ActiveRecord::Base
   belongs_to :api_user
 
 
-
   # these have same meaning (supports Lambdas and Symbols evaluating):
 
   validate :hmac, precence: true, hmac: {
@@ -63,10 +62,10 @@ end
 Valid options
 -------------
 
-* secret (Lambda) required
-* content (Lambda) required
-* message (String) optional (Example: 'ivalid')
-* digest (Symbol) optional (Default: :sha1; Available: :md5, :sha, :sha1, :sha224, :sha384, :sha512)
+* key (required) - secret preshared key
+* data (required) - data to be controlled with HMAC
+* algorithm (optional) -  by default 'sha1', 'md5', 'sha256', 'sha384', 'sha512' also supported
+* message (optional) - errormessage to be shown if HMAC validation fails
 
 
 Read more
