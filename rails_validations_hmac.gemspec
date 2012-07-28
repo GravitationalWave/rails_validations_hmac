@@ -12,19 +12,18 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.files = Dir['README.md', 'Gemfile', 'Rakefile', 'lib/**/*']
   s.test_files = Dir['spec/**/*']
-  
 
   s.author    = "Margus Pärt"
   s.email     = 'margus@tione.eu'
   s.homepage  = 'https://github.com/tione/rails_validations_hmac'
 
-  
-  s.add_development_dependency "rails"
-  s.add_development_dependency "activemodel"
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'rails'
+  s.add_development_dependency 'activemodel'
+  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'mongoid'
 
-  s.add_development_dependency "rspec-rails"
-  s.add_development_dependency "capybara"
-  s.add_development_dependency "guard-rspec"
-  s.add_development_dependency "guard-spork"
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'guard-rspec'
+  s.add_development_dependency 'guard-spork'
 end
