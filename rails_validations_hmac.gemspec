@@ -4,7 +4,7 @@ $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |s|
   s.platform  = Gem::Platform::RUBY
   s.name      = 'rails_validations_hmac'
-  s.version   = '0.0.3'
+  s.version   = '0.0.4'
   s.summary   = 'HMAC validation based on secret and content'
   s.description = 'HMAC Validation for Rails.'
 
