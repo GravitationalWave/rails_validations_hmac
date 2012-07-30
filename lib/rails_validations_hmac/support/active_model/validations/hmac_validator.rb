@@ -36,7 +36,7 @@ module ActiveModel
         when Proc
           record.instance_exec(&evaluation) rescue nil
         when Array
-          evaluation.collect {|e| value_in_context(record, e) }.join
+          evaluation.collect {|e| "#{value_in_context(record, e)}" }.join
         else
           evaluation
         end
