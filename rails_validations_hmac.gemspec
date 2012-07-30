@@ -1,10 +1,10 @@
 lib = File.expand_path('../lib/', __FILE__)
-$:.unshift lib unless $:.include?(lib)
+$LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |s|
   s.platform  = Gem::Platform::RUBY
   s.name      = 'rails_validations_hmac'
-  s.version   = '0.0.2'
+  s.version   = '0.0.3'
   s.summary   = 'HMAC validation based on secret and content'
   s.description = 'HMAC Validation for Rails.'
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails_validations_hmac (0.0.2)
+    rails_validations_hmac (0.0.3)
 
 GEM
   remote: http://rubygems.org/
