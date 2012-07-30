@@ -13,7 +13,7 @@ Usage
 
 class ApiUser < ActiveRecord::Base
   has_many :posts
-  validates :secret, presence: true
+  validates :secret_key, presence: true
   validates :secret_algorithm, presence: true
 end
 
@@ -25,21 +25,21 @@ class Post < ActiveRecord::Base
 
   # these have same meaning (supports Lambdas and Symbols evaluating):
   validate :hmac, precence: true, hmac: {
-    secret:     lambda { api_user.secret },
-    content:    lambda { API_FIELDS.collect{|m| send(m) }.join },
+    key:        lambda { api_user.secret_key },
+    data:       lambda { API_FIELDS.collect{|m| send(m) }.join },
     algorithm:  lambda { api_user.secret_algorithm }
   }
 
   validates :hmac, presence: true, hmac: {
-    secret:     :'api_user.secret',
-    content:     API_FIELDS,
+    key:        :'api_user.secret_key',
+    data:       API_FIELDS,
     algorithm:  :'api_user.secret_algorithm'
   }
 
   # these are not evaluated (presumed that static value is written)
   validates :hmac, presence: true, hmac: {
-    secret:     'all_the_time_same',
-    content:    'why you would like to have a static value here?',
+    key:        'all_the_time_same',
+    data:       'why you would like to have a static value here?',
     algorithm:  'md5' # by default its sha1
   }
 end
